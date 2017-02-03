@@ -98,9 +98,9 @@ public class Login extends JFrame implements ActionListener {
 			
 			
 			if(inicio==true){
-				System.out.println("Esto va");
-				JOptionPane.showMessageDialog(this, "Los datos coinciden ahora iras al menu principal","Has Iniciado Sesion",JOptionPane.INFORMATION_MESSAGE);
 				
+				JOptionPane.showMessageDialog(this, "Los datos coinciden ahora iras al menu principal","Has Iniciado Sesion",JOptionPane.INFORMATION_MESSAGE);
+			
 			}else{
 				contraseñaField.setText("");
 				usuarioField.setText("");
