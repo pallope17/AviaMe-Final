@@ -1,5 +1,5 @@
 package models;
-// Generated 26-ene-2017 13:38:03 by Hibernate Tools 4.3.1.Final
+// Generated 02-feb-2017 13:48:33 by Hibernate Tools 4.3.1.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,21 +16,25 @@ public class Usuario implements java.io.Serializable {
 	private String telefono;
 	private String correo;
 	private String username;
-	private String contraseña;
+	private String contrasenya;
 	private Set pajaros = new HashSet(0);
 
 	public Usuario() {
 	}
 
+	public Usuario(String contrasenya) {
+		this.contrasenya = contrasenya;
+	}
+
 	public Usuario(String nombre, String apellidos, Integer edad, String telefono, String correo, String username,
-			String contraseña, Set pajaros) {
+			String contrasenya, Set pajaros) {
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.edad = edad;
 		this.telefono = telefono;
 		this.correo = correo;
 		this.username = username;
-		this.contraseña = contraseña;
+		this.contrasenya = contrasenya;
 		this.pajaros = pajaros;
 	}
 
@@ -90,12 +94,12 @@ public class Usuario implements java.io.Serializable {
 		this.username = username;
 	}
 
-	public String getContraseña() {
-		return this.contraseña;
+	public String getContrasenya() {
+		return this.contrasenya;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setContrasenya(String contrasenya) {
+		this.contrasenya = contrasenya;
 	}
 
 	public Set getPajaros() {
