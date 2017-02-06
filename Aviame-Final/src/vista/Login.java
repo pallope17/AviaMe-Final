@@ -107,13 +107,14 @@ public class Login extends JFrame implements ActionListener {
 				contraseñaField.setText("");
 				usuarioField.setText("");
 				JOptionPane.showMessageDialog(this, "Ese usuario o esa contraseña son incorrectas","Error",JOptionPane.INFORMATION_MESSAGE);
+				Registrarse r1=new Registrarse();
 			}
 			
 		
 		}
 		
 		else if(e.getSource()==registrar){
-			
+			Registrarse regis1=new Registrarse();
 		}
 		
 		

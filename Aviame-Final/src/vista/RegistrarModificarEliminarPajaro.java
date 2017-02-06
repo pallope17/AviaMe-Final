@@ -36,10 +36,12 @@ imagenLabel.setBounds(80, 20, 300, 240);
 
 
 //LLAMA AL METODO
-//ponerImagen();
+ponerImagen();
 registrarPajaro.setBounds(100,270,260,40);
 modificarPajaro.setBounds(100,320,260,40);
 eliminarPajaro.setBounds(100,370,260,40);
+
+panel.add(imagenLabel);
 panel.add(registrarPajaro);
 panel.add(modificarPajaro);
 panel.add(eliminarPajaro);
