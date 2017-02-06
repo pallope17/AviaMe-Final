@@ -49,7 +49,7 @@ public class Login extends JFrame implements ActionListener {
 		contraseñaField.setBounds(130, 60, 110, 20);
 
 		
-		iniciar= new JButton("Iniciar Session");
+		iniciar= new JButton("Iniciar Sesion");
 		registrar= new JButton("Registrarse");
 		
 		iniciar.setBounds(35,95,118,20);
@@ -96,24 +96,22 @@ public class Login extends JFrame implements ActionListener {
 			inicio=controlador.Login.iniciarSesion(usuario,contraseña);
 			
 			
-			
-			
+		
 			
 			if(inicio==true){
 				
 				JOptionPane.showMessageDialog(this, "Los datos coinciden ahora iras al menu principal","Has Iniciado Sesion",JOptionPane.INFORMATION_MESSAGE);
 				MenuPrincipal m1= new MenuPrincipal();
-			}else{
+				setVisible(false);
+			}else if(inicio==false){
 				contraseñaField.setText("");
 				usuarioField.setText("");
 				JOptionPane.showMessageDialog(this, "Ese usuario o esa contraseña son incorrectas","Error",JOptionPane.INFORMATION_MESSAGE);
-				Registrarse r1=new Registrarse();
 			}
-			
-		
 		}
 		
 		else if(e.getSource()==registrar){
+			setVisible(false);
 			Registrarse regis1=new Registrarse();
 		}
 		

@@ -14,6 +14,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -34,6 +37,9 @@ public class Registrarse extends JFrame implements  ActionListener{
 	JPasswordField contrasenyaEdit;
 	JLabel nombre,apellidos,edad,telefono,correo,username,contrasenya, imagenLabel;
 	JButton botonNuevoUsuario,borrarDatos;
+	private JMenuBar barra;
+	private JMenu ayuda;
+	private  JMenuItem salir, cerrarSesion,verAyuda,reportes;
 	
 	
 	public Registrarse() {
@@ -44,19 +50,44 @@ public class Registrarse extends JFrame implements  ActionListener{
 		
 	public void iniciarGUI(){
 		
+		/*--------------------------------------------------------------*/
+		barra= new JMenuBar();
+		
+		 ayuda= new JMenu("Ayuda");
+		
+		 salir= new JMenuItem("Salir");
+		 cerrarSesion= new JMenuItem("Cerrar Sesion");
+		 verAyuda= new JMenuItem("Ver Ayuda");
+		 reportes= new JMenuItem("Hacer un Reporte");
+		
+		 salir.addActionListener(this);
+		 cerrarSesion.addActionListener(this);
+		 verAyuda.addActionListener(this);
+		 reportes.addActionListener(this);
+		
+		ayuda.add(cerrarSesion);
+		ayuda.add(reportes);
+		ayuda.add(verAyuda);
+		ayuda.add(salir);
+		
+		barra.add(ayuda);
+		setJMenuBar(barra);
+		/*--------------------------------------------------------------*/
+		
+		
 			panelImagen=new JPanel();
 			panelImagen.setLayout(null);
 			
 			
 			imagenLabel = new JLabel();
-			imagenLabel.setBounds(160, 10, 300, 160);
+			imagenLabel.setBounds(160, 10, 300, 190);
 			ponerImagen();
 			
 			
 			panelImagen.add(imagenLabel);
-			panelBot= new JPanel(new GridLayout(7, 2));
+			panelBot= new JPanel(new GridLayout(8, 2));
 			
-				add(panelImagen);
+			add(panelImagen);
 			add(panelBot, BorderLayout.PAGE_END);
 			
 
@@ -83,6 +114,7 @@ public class Registrarse extends JFrame implements  ActionListener{
 			 contrasenyaEdit=new JPasswordField();
 			
 			  borrarDatos= new JButton("Borrar Datos");
+			  
 			 botonNuevoUsuario= new JButton("Registrar Usuario");
 			 
 			
@@ -99,6 +131,9 @@ public class Registrarse extends JFrame implements  ActionListener{
 			panelBot.add(correo);
 			panelBot.add(correoEdit);
 			
+			panelBot.add(telefono);
+			panelBot.add(telefonoEdit);
+			
 			panelBot.add(username);
 			panelBot.add(usernameEdit);
 			
@@ -110,10 +145,11 @@ public class Registrarse extends JFrame implements  ActionListener{
 			panelBot.add(botonNuevoUsuario);
 			
 			botonNuevoUsuario.addActionListener(this);
+			borrarDatos.addActionListener(this);
 			
 			
 			pack();
-			setSize(600,400);
+			setSize(600,480);
 			setLocationRelativeTo(null);
 		
 			setVisible(true);
@@ -132,13 +168,7 @@ public class Registrarse extends JFrame implements  ActionListener{
 		
 		if(e.getSource()==borrarDatos){
 			
-			nombreEdit.setText("");
-			apellidosEdit.setText("");
-			edadEdit.setText("");
-			correoEdit.setText("");
-			telefonoEdit.setText("");
-			usernameEdit.setText("");
-			contrasenyaEdit.setText("");
+			borrarDatos();
 			
 		}else if(e.getSource()==botonNuevoUsuario){
 			
@@ -149,9 +179,6 @@ public class Registrarse extends JFrame implements  ActionListener{
 			user=usernameEdit.getText();
 			pass=contrasenyaEdit.getPassword();
 			anyos=edadEdit.getText();
-			
-			
-			
 			
 			edadPasar=Integer.parseInt(anyos);
 			passPasar=String.valueOf(pass);
@@ -164,6 +191,7 @@ public class Registrarse extends JFrame implements  ActionListener{
 				
 				JOptionPane.showMessageDialog(this, "Los datos son correctos el usuario se ha añadido a la base de datos","Registrado Correctamene",JOptionPane.INFORMATION_MESSAGE);
 				MenuPrincipal m1= new MenuPrincipal();
+				setVisible(false);
 			}else{
 				contrasenyaEdit.setText("");
 				usernameEdit.setText("");
@@ -172,7 +200,14 @@ public class Registrarse extends JFrame implements  ActionListener{
 			
 			
 			
+		}else if(e.getSource()==salir){
+			System.exit(0);
+		}else if(e.getSource()==cerrarSesion){
+			Login l1= new Login();
+			setVisible(false);
 		}
+		
+	
 		
 	}
 	
