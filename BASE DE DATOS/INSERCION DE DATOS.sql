@@ -1,16 +1,16 @@
-  INSERT INTO usuario(nombre,apellidos,edad,telefono,correo,username,contraseña)
+  INSERT INTO usuario(nombre,apellidos,edad,telefono,correo,username,contrasenya)
  values('Mauricio','Colmenero Pochetino',53,'666222111','pochemauri@gmail.com','Poxecolme','Bigotes');
  
-  INSERT INTO usuario(nombre,apellidos,edad,telefono,correo,username,contraseña)
+  INSERT INTO usuario(nombre,apellidos,edad,telefono,correo,username,contrasenya)
  values('Jose','Hilario Cubel',31,'666010111','josehilario@gmail.com','joseh','Hilario'); 
  
-  INSERT INTO usuario(nombre,apellidos,edad,telefono,correo,username,contraseña)
+  INSERT INTO usuario(nombre,apellidos,edad,telefono,correo,username,contrasenya)
  values('Celia','Llorens Perez',24,'666000112','celialp@gmail.com','celialp','Llorens1104');
  
-  INSERT INTO usuario(nombre,apellidos,edad,telefono,correo,username,contraseña)
+  INSERT INTO usuario(nombre,apellidos,edad,telefono,correo,username,contrasenya)
  values('Angel','Hilario Cubel',26,'666111111','anhicu@gmail.com','ahlario','Angel123');
  
-  INSERT INTO usuario(nombre,apellidos,edad,telefono,correo,username,contraseña)
+  INSERT INTO usuario(nombre,apellidos,edad,telefono,correo,username,contrasenya)
  values('Pablo','Llorens Perez',20,'666000111','pablollorensperez17@gmail.com','pallope','Hola1725');
  
  

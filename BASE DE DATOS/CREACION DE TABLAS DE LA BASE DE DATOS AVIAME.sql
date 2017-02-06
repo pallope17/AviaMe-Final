@@ -9,7 +9,7 @@ edad int (2),
 telefono varchar(15),
 correo varchar(60),
 username varchar (20) unique,
-contraseña varchar(29),
+contrasenya varchar(29),
 primary key(id_usuario)
 )ENGINE=InnoDB;
 
