@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 
@@ -16,7 +17,8 @@ public class Login extends JFrame implements ActionListener {
 	
 	private String usuario,contraseña;
 	private JLabel contraseñaLabel, usuarioLabel;
-	private JTextField contraseñaField, usuarioField;
+	private JTextField  usuarioField;
+	private JPasswordField contraseñaField;
 	private JButton iniciar, registrar;
 	private JPanel panel;
 	
@@ -32,7 +34,7 @@ public class Login extends JFrame implements ActionListener {
 		panel= new JPanel();
 		panel.setLayout(null);
 		
-		contraseñaField= new JTextField("");
+		contraseñaField= new JPasswordField("");
 		usuarioField=new JTextField("");
 		
 		contraseñaLabel= new JLabel("CONTRASEÑA:");
@@ -75,7 +77,7 @@ public class Login extends JFrame implements ActionListener {
 		setSize(300,160);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-	
+		setResizable(false);
 		setLocationRelativeTo(null);
 		setTitle("Iniciar Sesion");
 	
@@ -93,14 +95,14 @@ public class Login extends JFrame implements ActionListener {
 			
 			inicio=controlador.Login.iniciarSesion(usuario,contraseña);
 			
-			System.out.println("******************** antes del if");
+			
 			
 			
 			
 			if(inicio==true){
 				
 				JOptionPane.showMessageDialog(this, "Los datos coinciden ahora iras al menu principal","Has Iniciado Sesion",JOptionPane.INFORMATION_MESSAGE);
-			
+				MenuPrincipal m1= new MenuPrincipal();
 			}else{
 				contraseñaField.setText("");
 				usuarioField.setText("");
