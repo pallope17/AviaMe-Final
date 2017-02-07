@@ -3,6 +3,7 @@ package vista;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -93,7 +94,12 @@ public class Login extends JFrame implements ActionListener {
 			contraseña=contraseñaField.getText();
 			usuario=usuarioField.getText();
 			
-			inicio=controlador.Login.iniciarSesion(usuario,contraseña);
+			try {
+				inicio=controlador.Login.iniciarSesion(usuario,contraseña);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			
 			
 		

@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -183,10 +184,23 @@ public class Registrarse extends JFrame implements  ActionListener{
 			edadPasar=Integer.parseInt(anyos);
 			passPasar=String.valueOf(pass);
 			
-			controlador.Registrarse.Registrarse(nom, ape, email, telf, edadPasar, user, passPasar);
+			try {
+				controlador.Registrarse.Registrarse(nom, ape, email, telf, edadPasar, user, passPasar);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			
-			boolean bienCreado=controlador.Registrarse.comprobarRegistro(user, passPasar);
-			
+				boolean bienCreado = false;
+				try {
+					bienCreado = controlador.Registrarse.comprobarRegistro( passPasar);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					contrasenyaEdit.setText("");
+					usernameEdit.setText("");
+					JOptionPane.showMessageDialog(this, "Ese usuario ya existe","Error",JOptionPane.INFORMATION_MESSAGE);
+				}
+		
 			if(bienCreado==true){
 				
 				JOptionPane.showMessageDialog(this, "Los datos son correctos el usuario se ha añadido a la base de datos","Registrado Correctamene",JOptionPane.INFORMATION_MESSAGE);
@@ -195,7 +209,7 @@ public class Registrarse extends JFrame implements  ActionListener{
 			}else{
 				contrasenyaEdit.setText("");
 				usernameEdit.setText("");
-				JOptionPane.showMessageDialog(this, "Ese usuario o esa contraseña son incorrectas","Error",JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(this, "Ese usuario ya existe","Error",JOptionPane.INFORMATION_MESSAGE);
 			}
 			
 			
@@ -203,8 +217,13 @@ public class Registrarse extends JFrame implements  ActionListener{
 		}else if(e.getSource()==salir){
 			System.exit(0);
 		}else if(e.getSource()==cerrarSesion){
-			Login l1= new Login();
-			setVisible(false);
+			int i=JOptionPane.showConfirmDialog(this,"Estas seguro de que quieres cerrar session");
+			
+			if(i==JOptionPane.OK_OPTION){
+				Login l1=new Login();
+				setVisible(false);
+				
+			}
 		}
 		
 	
@@ -216,7 +235,7 @@ public class Registrarse extends JFrame implements  ActionListener{
 		URL url= getClass().getResource(rutaImagen);
 		ImageIcon imagen= new  ImageIcon(url);*/
 		
-		ImageIcon imagen= new  ImageIcon("usuario.jpg");
+		ImageIcon imagen= new  ImageIcon("imagenes/usuario.jpg");
 		Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(imagenLabel.getWidth(), imagenLabel.getHeight(), Image.SCALE_DEFAULT));
 		imagenLabel.setIcon(icono);
 		this.repaint();

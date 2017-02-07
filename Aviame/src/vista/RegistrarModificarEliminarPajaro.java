@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 	public class RegistrarModificarEliminarPajaro extends JFrame implements ActionListener{
@@ -105,9 +106,14 @@ import javax.swing.JPanel;
 			else if(e.getSource()==salir){
 				System.exit(0);
 			}else if(e.getSource()==cerrarSesion){
-				Login l1= new Login();
-				setVisible(false);
-			}
+				
+				int i=JOptionPane.showConfirmDialog(this,"Estas seguro de que quieres cerrar session");
+				
+				if(i==JOptionPane.OK_OPTION){
+					Login l1=new Login();
+					setVisible(false);
+					
+				}}
 		}
 	
 		public  void ponerImagen(){

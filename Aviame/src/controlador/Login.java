@@ -1,5 +1,6 @@
 package controlador;
 
+import java.sql.SQLException;
 import java.util.Iterator;
 
 import org.hibernate.classic.Session;
@@ -14,7 +15,7 @@ public class Login {
 	
 	
 	
-	public static boolean iniciarSesion(String username,String password){
+	public static boolean iniciarSesion(String username,String password) throws SQLException{
 		
 		boolean exiten=false;
 		

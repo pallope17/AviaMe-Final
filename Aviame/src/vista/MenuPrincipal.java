@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.text.html.ImageView;
 
@@ -121,10 +122,21 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 			}
 			
 			else if(e.getSource()==salir){
+				
 				System.exit(0);
+				
 			}else if(e.getSource()==cerrarSesion){
-				Login l1= new Login();
-				setVisible(false);
+				
+				int i=JOptionPane.showConfirmDialog(this,"Estas seguro de que quieres cerrar session");
+				
+				if(i==JOptionPane.OK_OPTION){
+					Login l1=new Login();
+					setVisible(false);
+					
+				}
+					
+				
+		
 			}
 			
 		}
@@ -134,8 +146,8 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 			/*String rutaImagen="imagen1.jpg";
 			URL url= getClass().getResource(rutaImagen);
 			ImageIcon imagen= new  ImageIcon(url);*/
-			
-			ImageIcon imagen= new  ImageIcon("imagen1.jpg");
+		
+			ImageIcon imagen= new  ImageIcon("imagenes/imagen1.jpg");
 			Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(imagenLabel.getWidth(), imagenLabel.getHeight(), Image.SCALE_DEFAULT));
 			imagenLabel.setIcon(icono);
 			this.repaint();
