@@ -25,29 +25,49 @@ public class Registrarse {
 		user.setContrasenya(contrasenya);
 		user.setUsername(username);
 		user.setTelefono(telefono);
+		
+		
 
 	
 		
 	}
 	
-	public static boolean comprobarRegistro(String username) throws SQLException{
+	public static boolean comprobarRegistro(String username) {
 		
 		
-		boolean registro;
-		Session session=ConectarseBaseDatos.conectar();
-			 
-		Iterator iter=(Iterator) session.createQuery("from Usuario where username ='"+username+"'").iterate();
-		
-		if(iter.hasNext()){registro=false;}else{registro=true;}
-		
-		session.persist(user);
-		
-		session.beginTransaction().commit();
-		
-		session.close();
+		boolean registro = false;
+		Session session;
+		try {
+			session = ConectarseBaseDatos.conectar();
+			Iterator iter=(Iterator) session.createQuery("from Usuario where username ='"+username+"'").iterate();
 	
-		
-		
-		return registro;
+			
+			while(iter.hasNext()){
+				registro=false;
+			}
+			if(registro==false){
+				
+				
+			}else{
+				
+				System.out.println("el user no existe");
+				registro=true;
+				
+				session.persist(user);
+				
+				session.beginTransaction().commit();
+				
+				session.close();
+				}
+
+
+			return registro;
+			
+		} catch (SQLException e) {
+			registro=false;
+			return registro;
+		}
+			 
+	
 	}
 }

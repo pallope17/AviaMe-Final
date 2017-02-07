@@ -1,5 +1,7 @@
 package vista;
 
+import java.sql.SQLException;
+
 import javax.swing.table.DefaultTableModel;
 
 import models.Pajaro;
@@ -10,23 +12,17 @@ public class ModeloTablaActualizar extends DefaultTableModel {
 	
 
 	
-	public ModeloTablaActualizar(){
+	public ModeloTablaActualizar() throws SQLException{
 		
 		String [] columnas = {"COLOR","ESPECIE","SEXO","OBSERVACIONES","ID USUARIO","ID PAREJA"};
 		
-		Pajaro [][] filas = null;
+		Object [][] filas = controlador.Actualizar.mostrarPajaros();
 		
 		
 		setDataVector(filas,columnas);
 	}
 	
 	
-	
-	
-	
-
-
-
 	public boolean isCellEditable(int i, int j){
 		return false;
 	}
