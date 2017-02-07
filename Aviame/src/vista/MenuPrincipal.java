@@ -16,6 +16,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.text.AbstractDocument.Content;
 import javax.swing.text.html.ImageView;
 
 
@@ -119,31 +120,23 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 			if(e.getSource()==accionesPajaros){
 				RegistrarModificarEliminarPajaro r1= new RegistrarModificarEliminarPajaro();
 				setVisible(false);
-			}
-			
-			else if(e.getSource()==salir){
+			}else if(e.getSource()==salir){
 				
 				System.exit(0);
 				
 			}else if(e.getSource()==cerrarSesion){
-				
 				int i=JOptionPane.showConfirmDialog(this,"Estas seguro de que quieres cerrar session");
 				
 				if(i==JOptionPane.OK_OPTION){
 					Login l1=new Login();
 					setVisible(false);
-					
-				}
-					
-				
-		
 			}
-			
+			}
 		}
 
 		
 		public  void ponerImagen(){
-			/*String rutaImagen="imagen1.jpg";
+			/*String rutaImagen="imagenes/imagen1.jpg";
 			URL url= getClass().getResource(rutaImagen);
 			ImageIcon imagen= new  ImageIcon(url);*/
 		
@@ -154,7 +147,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 			
 		}
 		
-		/*public void hacerBarraMenu(JMenuItem salir, JMenuItem cerrarSesion, JMenuItem verAyuda, JMenuItem reportes, JMenu ayuda, JMenuBar barra){
+		/*public static  void hacerBarraMenu(Content cont,JMenuItem salir, JMenuItem cerrarSesion, JMenuItem verAyuda, JMenuItem reportes, JMenu ayuda, JMenuBar barra){
 			
 			barra= new JMenuBar();
 			
@@ -165,10 +158,44 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 			 verAyuda= new JMenuItem("Ver Ayuda");
 			 reportes= new JMenuItem("Hacer un Reporte");
 			
-			 salir.addActionListener(this);
-			 cerrarSesion.addActionListener(this);
-			 verAyuda.addActionListener(this);
-			 reportes.addActionListener(this);
+			 salir.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					System.exit(0);
+				}
+			});
+			 
+			 
+			 cerrarSesion.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+			
+					int i=JOptionPane.showConfirmDialog(this,"Estas seguro de que quieres cerrar session");
+					
+					if(i==JOptionPane.OK_OPTION){
+						Login l1=new Login();
+						setVisible(false);}}
+				
+			});
+			 verAyuda.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+			 reportes.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
 			
 			ayuda.add(cerrarSesion);
 			ayuda.add(reportes);
@@ -176,7 +203,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 			ayuda.add(salir);
 			
 			barra.add(ayuda);
-			setJMenuBar(barra);
+			((JFrame) cont).setJMenuBar(barra);
 			
 		}*/
 		

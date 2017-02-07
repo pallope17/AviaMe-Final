@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 06-feb-2017 12:06:56 by Hibernate Tools 4.3.5.Final -->
+<!-- Generated 07-feb-2017 12:59:43 by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping>
     <class name="models.Usuario" table="usuario" catalog="aviame" optimistic-lock="version">
         <id name="idUsuario" type="java.lang.Integer">
@@ -27,7 +27,7 @@
             <column name="username" length="20" unique="true" />
         </property>
         <property name="contrasenya" type="string">
-            <column name="contrasenya" length="29" />
+            <column name="contrasenya" length="25" not-null="true" />
         </property>
         <set name="pajaros" table="pajaro" inverse="true" lazy="true" fetch="select">
             <key>

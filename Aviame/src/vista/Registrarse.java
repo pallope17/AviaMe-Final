@@ -82,6 +82,12 @@ public class Registrarse extends JFrame implements  ActionListener{
 			
 			imagenLabel = new JLabel();
 			imagenLabel.setBounds(160, 10, 300, 190);
+			
+			/*
+			ImageIcon icon = new ImageIcon(getClass().getResource("/imganes/imagen1.jpg"));
+			ponerImagen(icon);*/
+			
+			
 			ponerImagen();
 			
 			
@@ -182,35 +188,36 @@ public class Registrarse extends JFrame implements  ActionListener{
 			anyos=edadEdit.getText();
 			
 			edadPasar=Integer.parseInt(anyos);
-			passPasar=String.valueOf(pass);
+			passPasar=String.valueOf(pass); 
 			
 			try {
 				controlador.Registrarse.Registrarse(nom, ape, email, telf, edadPasar, user, passPasar);
+
+				boolean bienCreado = false;
+				bienCreado = controlador.Registrarse.comprobarRegistro( passPasar);
+		
+				if(bienCreado==true){
+					
+					JOptionPane.showMessageDialog(this, "Los datos son correctos el usuario se ha añadido a la base de datos","Registrado Correctamene",JOptionPane.INFORMATION_MESSAGE);
+					MenuPrincipal m1= new MenuPrincipal();
+					setVisible(false);
+				}else{
+					nombreEdit.setText("");
+					apellidosEdit.setText("");
+					correoEdit.setText("");
+					telefonoEdit.setText("");
+					usernameEdit.setText("");
+					contrasenyaEdit.setText("");
+					edadEdit.setText("");
+					JOptionPane.showMessageDialog(this, "Ya existe un usuario con este usuario","Error",JOptionPane.INFORMATION_MESSAGE);
+				}
+				
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				
+				
 			}
 			
-				boolean bienCreado = false;
-				try {
-					bienCreado = controlador.Registrarse.comprobarRegistro( passPasar);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					contrasenyaEdit.setText("");
-					usernameEdit.setText("");
-					JOptionPane.showMessageDialog(this, "Ese usuario ya existe","Error",JOptionPane.INFORMATION_MESSAGE);
-				}
 		
-			if(bienCreado==true){
-				
-				JOptionPane.showMessageDialog(this, "Los datos son correctos el usuario se ha añadido a la base de datos","Registrado Correctamene",JOptionPane.INFORMATION_MESSAGE);
-				MenuPrincipal m1= new MenuPrincipal();
-				setVisible(false);
-			}else{
-				contrasenyaEdit.setText("");
-				usernameEdit.setText("");
-				JOptionPane.showMessageDialog(this, "Ese usuario ya existe","Error",JOptionPane.INFORMATION_MESSAGE);
-			}
 			
 			
 			
@@ -231,6 +238,14 @@ public class Registrarse extends JFrame implements  ActionListener{
 	}
 	
 	public  void ponerImagen(){
+		/*
+		Image img=icon.getImage();
+		Image icono= img.getScaledInstance(imagenLabel.getWidth(), imagenLabel.getHeight(), Image.SCALE_DEFAULT);
+		ImageIcon imagenFinal=	new ImageIcon(icono);
+		imagenLabel.setIcon(imagenFinal);
+		this.repaint();*/
+		
+		
 		/*String rutaImagen="imagen1.jpg";
 		URL url= getClass().getResource(rutaImagen);
 		ImageIcon imagen= new  ImageIcon(url);*/

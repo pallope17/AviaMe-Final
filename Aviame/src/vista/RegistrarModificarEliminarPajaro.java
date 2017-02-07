@@ -121,7 +121,7 @@ import javax.swing.JPanel;
 			URL url= getClass().getResource(rutaImagen);
 			ImageIcon imagen= new  ImageIcon(url);*/
 			
-			ImageIcon imagen= new  ImageIcon("imagen1.jpg");
+			ImageIcon imagen= new  ImageIcon("imagenes/imagen1.jpg");
 			Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(imagenLabel.getWidth(), imagenLabel.getHeight(), Image.SCALE_DEFAULT));
 			imagenLabel.setIcon(icono);
 			this.repaint();
