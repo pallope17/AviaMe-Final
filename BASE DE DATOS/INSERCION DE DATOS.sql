@@ -85,3 +85,17 @@ values ('4','5','2017-02-2','2017-02-7');
 insert into tratamiento(id_enfermedad,id_medicamento,fecha_inicio,fecha_fin)
 values ('5','1','2017-02-04','2017-02-09');
 
+update pajaro
+set id_pareja=1
+where id_pajaro=2;
+
+update pajaro
+set id_pareja=2
+where id_pajaro=1;
+
+update pajaro
+set id_pareja=3
+where id_pajaro>2
+
+select * from pajaro;
+
