@@ -89,6 +89,7 @@ public class Actualizar {
 		boolean hacerRegistro=Actualizar.comprobarActualizacionPajaro( pareja, user);
 		
 		if(hacerRegistro==true){
+			System.out.println("valor true");
 			resultado=true;
 			paj.setPajaro(pareja);
 			paj.setUsuario(user);
@@ -96,6 +97,7 @@ public class Actualizar {
 			session.beginTransaction().commit();
 			session.close();
 		}else{
+			System.out.println("valor true");
 			resultado= false;
 		}
 		
@@ -113,7 +115,7 @@ public class Actualizar {
 		boolean registro=false;
 		
 		
-		if(user!=null && pareja ==null){registro=true;}else {registro=false;}
+		if(user!=null && pareja !=null){registro=true;}else {registro=false;}
 		
 		return registro;
 	

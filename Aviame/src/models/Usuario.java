@@ -1,5 +1,5 @@
 package models;
-// Generated 07-feb-2017 12:59:42 by Hibernate Tools 4.3.1.Final
+// Generated 10-feb-2017 15:23:33 by Hibernate Tools 4.3.5.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,10 +20,6 @@ public class Usuario implements java.io.Serializable {
 	private Set pajaros = new HashSet(0);
 
 	public Usuario() {
-	}
-
-	public Usuario(String contrasenya) {
-		this.contrasenya = contrasenya;
 	}
 
 	public Usuario(String nombre, String apellidos, Integer edad, String telefono, String correo, String username,
