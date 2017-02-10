@@ -55,23 +55,7 @@ public class ActualizaPajaro extends JFrame implements TableModelListener , Mous
 		try {
 			
 	
-			top= new JPanel();
-			top.setLayout(null);
 			
-
-			JLabel imagenLabel=new JLabel("");
-			imagenLabel.setBounds(80,20,300,240);
-			
-			 ImageIcon imagen= new  ImageIcon(getClass().getResource("/imagenes/usuario.jpg"));
-		        Icon iconImagen = new ImageIcon(imagen.getImage().getScaledInstance(imagenLabel.getWidth(), imagenLabel.getHeight(), Image.SCALE_DEFAULT));
-		        imagenLabel.setIcon(iconImagen);
-		        add(imagenLabel);
-			
-			top.add(imagenLabel);
-			
-		
-			
-			add(top,BorderLayout.PAGE_START);
 			
 			
 			/*-------------------------------------------------------------------------------------------------------------------*/
@@ -213,6 +197,7 @@ public class ActualizaPajaro extends JFrame implements TableModelListener , Mous
 				
 			}
 		}else if(e.getSource()==acutalizarPajaro){
+			
 			String color=colorEdit.getText();
 			String especie=especieEdit.getText();
 			String sexo=sexoEdit.getText();
@@ -223,14 +208,34 @@ public class ActualizaPajaro extends JFrame implements TableModelListener , Mous
 			
 			
 			this.repaint();
-			try {
-				Actualizar.introducirActualizacion(color,especie,sexo,observa,idpareja,idusuario,idpajaro);
-			} catch (SQLException e1) {
+			
+				try {
+					System.out.println("antes del metodo");
+					boolean actualizar=Actualizar.introducirActualizacion(color,especie,sexo,observa,idpareja,idusuario,idpajaro);
+					System.out.println("despues del metodo");
+					if(actualizar==true){
+						setVisible(false);
+						JOptionPane.showMessageDialog(this,"Ya se ha realizado la actualizacion");
+						MenuPrincipal m1= new MenuPrincipal();
+						
+					}else{
+						setVisible(false);
+						JOptionPane.showMessageDialog(this,"NO SE HA PODIDO REALIZAR LA ACUTALIZACION");
+						setVisible(true);
+					}
+					
+					
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
-				e1.printStackTrace();
-			}
+			
+			
+			
+
 		}else if(e.getSource()==atras){
-			MenuPrincipal m1= new MenuPrincipal();
+			RegistrarModificarEliminarPajaro m1= new RegistrarModificarEliminarPajaro();
 			setVisible(false);
 		}
 	}
@@ -290,6 +295,8 @@ public class ActualizaPajaro extends JFrame implements TableModelListener , Mous
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 
 
 }

@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-import javax.print.DocFlavor.URL;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,19 +19,20 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class RegistrarPajaro extends JFrame implements ActionListener{
+public class RegistrarEnfermedad extends JFrame implements ActionListener{
+	
 	
 
 	JPanel panelBot,panelImagen;
-	JTextField especieEdit,sexoEdit,colorEdit, observacionesEdit,idUsuarioEdit,idParejaEdit;
-	JLabel especie,sexo,color,observaciones,id_usuario,id_pareja, imagenLabel;
-	JButton botonNuevoPajaro,atras;
+	JTextField nombreEdit, sintomasEdit;
+	JLabel nombre,sintomas,imagenLabel;
+	JButton botonNuevaEnfermedad,atras;
 	private JMenuBar barra;
 	private JMenu ayuda;
 	private  JMenuItem salir, cerrarSesion,verAyuda,reportes;
 	
 	
-	public RegistrarPajaro() {
+	public RegistrarEnfermedad() {
 		super("Registrar Usuario");
 		iniciarGUI();
 	}
@@ -70,72 +70,54 @@ public class RegistrarPajaro extends JFrame implements ActionListener{
 			
 			
 			imagenLabel = new JLabel();
-			imagenLabel.setBounds(160, 10, 300, 190);
+			imagenLabel.setBounds(160, 10, 300, 200);
 			
-			 ImageIcon imagen= new  ImageIcon(getClass().getResource("/imagenes/imagen1.jpg"));
+		
+			
+			 ImageIcon imagen= new  ImageIcon(getClass().getResource("/imagenes/Farmacia2.png"));
 		        Icon iconImagen = new ImageIcon(imagen.getImage().getScaledInstance(imagenLabel.getWidth(), imagenLabel.getHeight(), Image.SCALE_DEFAULT));
 		        imagenLabel.setIcon(iconImagen);
 		        add(imagenLabel);
 			
 			
+			
 			panelImagen.add(imagenLabel);
-			panelBot= new JPanel(new GridLayout(8, 2));
+			panelBot= new JPanel(new GridLayout(3, 2));
 			
 			add(panelImagen);
 			add(panelBot, BorderLayout.PAGE_END);
 			
 
-			 especie = new JLabel("Especie :");
-			 especieEdit= new JTextField();
+			 nombre = new JLabel("NOMBRE :");
+			 nombreEdit= new JTextField();
 			 
 			 
-			 sexo= new JLabel("Sexo :");
-			 sexoEdit= new JTextField();
+			 sintomas= new JLabel("SINTOMAS :");
+			 sintomasEdit= new JTextField();
 			 
-			 color	= new JLabel("Color :");
-			 colorEdit= new JTextField();
-		
-			 observaciones= new JLabel("Observaciones :");
-			 observacionesEdit= new JTextField();
-			 
-			 id_usuario= new JLabel("ID Usuario :");
-			 idUsuarioEdit= new JTextField();
-			 
-			 id_pareja=new JLabel("ID Pareja :");
-			 idParejaEdit=new  JTextField();
-			 
+			
 			
 			
 			
 			  atras= new JButton("ATRAS");
 			  
-			  botonNuevoPajaro= new JButton("REGISTRAR PAJARO");
+			  botonNuevaEnfermedad= new JButton("REGISTRAR ENFERMEDAD");
 			 
 			
 				
-			panelBot.add(especie);
-			panelBot.add(especieEdit);
+			panelBot.add(nombre);
+			panelBot.add(nombreEdit);
 			
-			panelBot.add(sexo);
-			panelBot.add(sexoEdit);
+			panelBot.add(sintomas);
+			panelBot.add(sintomasEdit);
 			
-			panelBot.add(color);
-			panelBot.add(colorEdit);
 			
-			panelBot.add(observaciones);
-			panelBot.add(observacionesEdit);
-			
-			panelBot.add(id_usuario);
-			panelBot.add(idUsuarioEdit);
-			
-			panelBot.add(id_pareja);
-			panelBot.add(idParejaEdit);
 			
 			
 			panelBot.add(atras);
-			panelBot.add(botonNuevoPajaro);
+			panelBot.add(botonNuevaEnfermedad);
 			
-			botonNuevoPajaro.addActionListener(this);
+			botonNuevaEnfermedad.addActionListener(this);
 			atras.addActionListener(this);
 			
 			
@@ -147,36 +129,34 @@ public class RegistrarPajaro extends JFrame implements ActionListener{
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
+	
+	
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
-		String especie,sexo,color,observaciones;
-		String idUsuario;
-		String idPareja;
-		int id_usuario,id_pareja;
-		char[] pass;
+		String nombre,sintomas;
+		
+		
 		
 		
 		if(e.getSource()==atras){
 			
-			RegistrarModificarEliminarPajaro m1= new RegistrarModificarEliminarPajaro();
+			MenuPrincipal m1= new MenuPrincipal();
 			setVisible(false);
 			
-		}else if(e.getSource()==botonNuevoPajaro){
+		}else if(e.getSource()==botonNuevaEnfermedad){
 			
-			especie=especieEdit.getText();
-			sexo=sexoEdit.getText();
-			color=colorEdit.getText();
-			observaciones=observacionesEdit.getText();
-			idUsuario=idUsuarioEdit.getText();
-			idPareja=idParejaEdit.getText();
+			nombre=nombreEdit.getText();
+			sintomas=sintomasEdit.getText();
 			
-	
-	
+			
+		
+			
 			try {
-				boolean biencreado=controlador.RegistrarPajaro.Registrarse(especie, sexo, color, observaciones, idUsuario, idPareja);
+				boolean biencreado=controlador.RegistrarEnfermedad.Enfermedad(nombre, sintomas);
 
 				
 			
@@ -185,7 +165,7 @@ public class RegistrarPajaro extends JFrame implements ActionListener{
 					JOptionPane.showMessageDialog(this, "Los datos son correctos el pajaro se ha añadido a la base de datos","Registrado Correctamene",JOptionPane.INFORMATION_MESSAGE);
 					MenuPrincipal m1= new MenuPrincipal();
 					setVisible(false);
-				}else if(biencreado==false){
+				}else{
 					borrarDatos();
 				
 					JOptionPane.showMessageDialog(this, "No has introducido correctament el ID PAREJA o ID USUARIO","Error",JOptionPane.INFORMATION_MESSAGE);
@@ -196,10 +176,7 @@ public class RegistrarPajaro extends JFrame implements ActionListener{
 				
 			}
 			
-		
-			
-			
-			
+
 		}else if(e.getSource()==salir){
 			System.exit(0);
 		}else if(e.getSource()==cerrarSesion){
@@ -212,20 +189,12 @@ public class RegistrarPajaro extends JFrame implements ActionListener{
 			}
 		}
 		
-	
-		
 	}
-	
-	
 	
 	public void borrarDatos(){
 		
-		especieEdit.setText("");
-		sexoEdit.setText("");
-		colorEdit.setText("");
-		observacionesEdit.setText("");
-		idUsuarioEdit.setText("");
-		idParejaEdit.setText("");
+		nombreEdit.setText("");
+		sintomasEdit.setText("");
 		
 		this.repaint();
 		

@@ -89,6 +89,7 @@ import javax.swing.JPanel;
 			panel.add(eliminarPajaro);
 			panel.add(atras);
 			add(panel);
+			
 			//PROPIEDADES PANEL
 			setSize(460,560);
 			setVisible(true);
@@ -110,6 +111,9 @@ import javax.swing.JPanel;
 				setVisible(false);
 			}else if(e.getSource()==modificarPajaro){
 				ActualizaPajaro r1=new ActualizaPajaro();
+				setVisible(false);
+			}else if(e.getSource()==eliminarPajaro){
+				BorrarPajaro b1= new BorrarPajaro();
 				setVisible(false);
 			}
 			

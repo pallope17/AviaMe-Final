@@ -105,10 +105,10 @@ public class Login extends JFrame implements ActionListener {
 		
 			
 			if(inicio==true){
-				
+				setVisible(false);
 				JOptionPane.showMessageDialog(this, "Los datos coinciden ahora iras al menu principal","Has Iniciado Sesion",JOptionPane.INFORMATION_MESSAGE);
 				MenuPrincipal m1= new MenuPrincipal();
-				setVisible(false);
+				
 			}else if(inicio==false){
 				contraseñaField.setText("");
 				usuarioField.setText("");

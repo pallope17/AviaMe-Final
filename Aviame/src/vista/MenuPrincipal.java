@@ -19,6 +19,8 @@ import javax.swing.JPanel;
 import javax.swing.text.AbstractDocument.Content;
 import javax.swing.text.html.ImageView;
 
+import controlador.RegistrarMedicamento;
+
 
 
 public class MenuPrincipal extends JFrame implements ActionListener {
@@ -136,6 +138,14 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 					Login l1=new Login();
 					setVisible(false);
 			}
+			}
+			else if(e.getSource()==ponerEnfermedadSintomas){
+				RegistrarEnfermedad r1= new RegistrarEnfermedad();
+				setVisible(false);
+			}
+			else if (e.getSource()==ponerMedicamentoAdministracion){
+				vista.RegistrarMedicamento r1= new vista.RegistrarMedicamento();
+				setVisible(false);
 			}
 		}
 
